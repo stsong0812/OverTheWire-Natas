@@ -192,3 +192,31 @@ qPazSJBmrmU7UQJv17MHk1PGC4DxZMEP
 
 ## Natas Level 13->14:
 
+**Level Goal:**&#x20;
+
+```
+Username: natas14
+URL:      http://natas14.natas.labs.overthewire.org
+```
+
+**Writeup:** We are directed to a login page, attempting some default credentials directs us to a page that says "Access Denied". Lets look a the source code.
+
+<figure><img src=".gitbook/assets/Screenshot_2023-06-10_16_48_43.png" alt=""><figcaption></figcaption></figure>
+
+Here, we see the SQL query being made we also see that we are looking to log in as natas15. Using  the payload below, we are successfully logged in.
+
+```
+PAYLOAD:
+username: natas15
+password: 1" or "1=1
+```
+
+<figure><img src=".gitbook/assets/Screenshot_2023-06-10_16_57_10.png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Password</summary>
+
+TTkaI7AWG4iDERztBcEyKV7kRXH1EZRB
+
+</details>
