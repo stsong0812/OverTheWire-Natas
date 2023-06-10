@@ -135,4 +135,32 @@ Username: natas9
 URL:      http://natas9.natas.labs.overthewire.org
 ```
 
-**Writeup:**&#x20;
+**Writeup:** We have a text input field that seems to return words containing our input from some sort of dictionary. Viewing the source code , it looks like our input is passed in as the variable key through dictionary.txt through the passthru function.
+
+<figure><img src=".gitbook/assets/Screenshot_2023-06-10_12_59_53.png" alt=""><figcaption></figcaption></figure>
+
+It looks like we can execute shell commands through passthru seeing that it is used in this context to grep (print) strings in dictionary.txt that match our input. Inputting a command will start it after the grep -i which is not what we want. We can start a new command with a pipe ("|").
+
+```
+PAYLOAD:
+| cat /etc/natas_webpass/natas10
+
+VISUALIZATION:
+grep -i | cat /etc/natas_webpass/natas10 dictionary.txt
+```
+
+{% hint style="info" %}
+grep -i returns nothing, instead the pipe starts another command.
+{% endhint %}
+
+Entering this payload gives us the password also printing the entire dictionary.
+
+<figure><img src=".gitbook/assets/Screenshot_2023-06-10_13_06_46.png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Password:</summary>
+
+D44EcsFkLxPIkAAKLosx8z3hxX1Z4MCE
+
+</details>
